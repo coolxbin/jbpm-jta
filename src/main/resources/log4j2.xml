@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+	<appenders>
+		<!-- 控制台输出 -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} : %n%msg%n" />
+		</Console>
+		<Console name="OnlyMsgConsole" target="SYSTEM_OUT">
+			<PatternLayout pattern="%msg%n" />
+		</Console>
+	</appenders>
+	<loggers>
+		<root level="debug">
+			<appender-ref ref="Console" />
+		</root>
+		<logger name="org.kie" level="trace" additivity="false">
+			<appender-ref ref="OnlyMsgConsole" />
+		</logger>
+		<logger name="bitronix.tm" level="error" additivity="false">
+			<appender-ref ref="OnlyMsgConsole" />
+		</logger>
+	</loggers>
+</configuration>
